@@ -1,0 +1,27 @@
+Nav {
+    border-bottom: 1px solid #B1B1B1;
+    width: 100%;
+    margin: auto;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 5px;
+    font-weight: 700;
+    color: black;
+
+}
+
+Nav img {
+    position: absolute;
+    bottom: -30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 45%;
+}
+
+Nav.Link {
+    font-family: "Montserrat";
+    color: black;
+}
