@@ -4,7 +4,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 
 const AthletesTable = () => {
-    const [filteredAthletes, setFilteredAthletes] = useState([]); // Initialisez comme un tableau vide
+    const [athletes, setAthletes] = useState([]); // État pour stocker la liste complète des athlètes
+    const [filteredAthletes, setFilteredAthletes] = useState([]); // État pour stocker les athlètes filtrés
     const [filterName, setFilterName] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const [filterBirthYear, setFilterBirthYear] = useState('');
@@ -19,6 +20,7 @@ const AthletesTable = () => {
                     params: { limit: 100 }
                 });
                 if (response.data) {
+                    setAthletes(response.data);
                     setFilteredAthletes(response.data);
                 } else {
                     console.error('Response data is not an array');
@@ -31,20 +33,22 @@ const AthletesTable = () => {
         };
 
         fetchAthletes();
-    }, []); // Mettre un tableau vide pour ne s'exécuter qu'une seule fois
+    }, []); // Ne s'exécute qu'une seule fois
+
+    useEffect(() => {
+        applyFilters(filterName, filterBirthYear);
+    }, [filterName, filterBirthYear]);
 
     const handleNameFilterChange = (event) => {
         setFilterName(event.target.value);
-        applyFilters(event.target.value, filterBirthYear);
     };
 
     const handleBirthYearFilterChange = (event) => {
         setFilterBirthYear(event.target.value);
-        applyFilters(filterName, event.target.value);
     };
 
     const applyFilters = (name, birthYear) => {
-        let filtered = filteredAthletes;
+        let filtered = athletes;
 
         if (name) {
             filtered = filtered.filter(athlete =>
@@ -61,6 +65,12 @@ const AthletesTable = () => {
         setFilteredAthletes(filtered);
     };
 
+    const handleResetFilters = () => {
+        setFilterName('');
+        setFilterBirthYear('');
+        setFilteredAthletes(athletes); // Réinitialise les athlètes filtrés avec la liste complète
+    };
+
     return (
         <div className="container mt" style={{ width: '100%' }}>
             <h1>Tableau des Athlètes</h1>
@@ -71,14 +81,16 @@ const AthletesTable = () => {
                     value={filterName}
                     onChange={handleNameFilterChange}
                     placeholder="Rechercher par nom"
-                />
-                <input
+                />   <button className="btn btn-secondary mt-2" onClick={handleResetFilters}>
+                    Réinitialiser les filtres
+                </button>
+                {/* <input
                     type="number"
                     className="form-control"
                     value={filterBirthYear}
                     onChange={handleBirthYearFilterChange}
                     placeholder="Filtrer par année de naissance"
-                />
+                /> */}
             </div>
             <table className="table table-striped">
                 <thead>
@@ -92,7 +104,7 @@ const AthletesTable = () => {
                 </thead>
                 <tbody>
                     {
-                        isLoading ? <p>Loading ...</p> :
+                        isLoading ? <tr><td colSpan="5">Loading...</td></tr> :
                             filteredAthletes.map((athlete, index) => (
                                 <tr key={index}>
                                     <td><a href={athlete.athlete_url} target="_blank" rel="noopener noreferrer">{athlete.athlete_full_name}</a></td>

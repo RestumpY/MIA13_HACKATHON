@@ -4,7 +4,10 @@ from sqlalchemy.exc import OperationalError
 from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "http://localhost:3001"}})
+CORS(app)
+CORS(app, origins='http://localhost:3001')
+
+# CORS(app, resources={r"/*": {"origins": "http://localhost:3001"}})
 
 # Configuration de la connexion à la base de données PostgreSQL
 POSTGRES_USER = 'jo2024_fatima'
@@ -57,18 +60,36 @@ def get_all_medals():
     except OperationalError as e:
         # En cas d'échec de la connexion, renvoyer un message d'erreur
         return f"Erreur de connexion à la base de données : {str(e)}", 500
-
-# Route pour récupérer toutes les données de la table "athletes"
 @app.route('/athletes', methods=['GET'])
 def get_all_athletes():
     try:
         # Se connecter à la base de données
         conn = engine.connect()
-        limit = request.args.get('limit', default=100, type=int)
 
-        # Exécuter la requête pour récupérer les entrées de la table "athletes" avec une limite
-        query = text('SELECT * FROM "public"."olympic_athletes" LIMIT :limit')
-        result = conn.execute(query, {'limit': limit})
+        # Paramètres de filtrage
+        limit = request.args.get('limit', default=100, type=int)
+        athlete_name = request.args.get('athlete_name', default='', type=str)
+        birth_year = request.args.get('birth_year', default=None, type=int)
+
+        # Construction de la requête SQL avec filtrage
+        base_query = 'SELECT * FROM "public"."olympic_athletes" WHERE 1=1'
+        if athlete_name:
+            base_query += ' AND athlete_full_name LIKE :athlete_name'
+        if birth_year is not None:
+            base_query += ' AND athlete_year_birth = :birth_year'
+        base_query += ' LIMIT :limit'
+        
+        query = text(base_query)
+
+        # Préparer les paramètres
+        params = {
+            'athlete_name': f'%{athlete_name}%' if athlete_name else None,
+            'birth_year': birth_year,
+            'limit': limit
+        }
+
+        # Exécuter la requête SQL avec les paramètres de filtrage
+        result = conn.execute(query, params)
 
         # Convertir les résultats en format JSON et les renvoyer
         data = []

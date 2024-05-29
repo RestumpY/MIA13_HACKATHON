@@ -14,18 +14,21 @@ function TabData() {
 
     return (
         <Tabs
-            defaultActiveKey="profile"
+            defaultActiveKey="athelete"
             id="fill-tab-example"
             className="mb-3"
             fill
         >
-            <Tab eventKey="home" title="Atheles">
+            <Tab eventKey="athelete" title="Atheletes">
                 <AthletesTable />
             </Tab>
-            <Tab eventKey="profile" title="Médaille">
+            <Tab eventKey="medal" title="Médailles">
                 <MedalsTable />
             </Tab>
-            <Tab eventKey="longer-tab" title="Saison">
+            <Tab eventKey="host" title="Pays d'accueil">
+                filtré par Saison
+            </Tab>
+            <Tab eventKey="result" title="Résultats">
                 filtré par Saison
             </Tab>
         </Tabs>
