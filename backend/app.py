@@ -8,7 +8,7 @@ def get_medals_by_country(country):
     # Charger le modèle de ML/DL pré-enregistré 
     model = pickle.load(open('model.pkl', 'rb'))
 
-    # TODO: récupérer les médailles pour le pays ciblé
+    # TODO: prédire les médailles pour le pays ciblé
 
     # data = {
     #     "country": country,
@@ -25,7 +25,7 @@ def get_top_25_countries():
     # Charger le modèle de ML/DL pré-enregistré 
     model = pickle.load(open('model.pkl', 'rb'))
 
-    # TODO: récupérer les 25 meilleurs pays et leurs médailles respectives
+    # TODO: prédire les 25 meilleurs pays et leurs médailles respectives
 
     # data = [
     #     {
@@ -50,7 +50,7 @@ def get_winners():
     # Charger le modèle de ML/DL pré-enregistré 
     model = pickle.load(open('model.pkl', 'rb'))
 
-    # TODO: récupérer la liste des athlètes gagnants
+    # TODO: prédire la liste des athlètes gagnants
 
     # data = [
     #     {
@@ -85,7 +85,7 @@ def get_country_groups():
     # Charger le modèle de ML/DL pré-enregistré 
     model = pickle.load(open('model.pkl', 'rb'))
 
-    # TODO: récupérer la classification des pays par groupes
+    # TODO: prédire la classification des pays par groupes
 
     # data = [
     #     {
