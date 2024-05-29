@@ -1,8 +1,10 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 from sqlalchemy import create_engine, text
 from sqlalchemy.exc import OperationalError
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app, resources={r"/*": {"origins": "http://localhost:3001"}})
 
 # Configuration de la connexion à la base de données PostgreSQL
 POSTGRES_USER = 'jo2024_fatima'
@@ -16,17 +18,18 @@ DATABASE_URL = f"postgresql://{POSTGRES_USER}:{POSTGRES_PASSWORD}@{POSTGRES_HOST
 
 # Créer un moteur SQLAlchemy pour la connexion à la base de données
 engine = create_engine(DATABASE_URL)
-
 # Route pour récupérer toutes les données de la table "olympic_medals"
 @app.route('/medals', methods=['GET'])
 def get_all_medals():
     try:
         # Se connecter à la base de données
         conn = engine.connect()
+        limit = request.args.get('limit', default=100, type=int)
+    
 
         # Exécuter la requête pour récupérer toutes les entrées de la table "olympic_medals"
-        query = text('SELECT * FROM "public"."olympic_medals"')
-        result = conn.execute(query)
+        query = text('SELECT * FROM "public"."olympic_medals" LIMIT :limit')
+        result = conn.execute(query, {'limit': limit})
 
         # Convertir les résultats en format JSON et les renvoyer
         data = []
@@ -55,17 +58,17 @@ def get_all_medals():
         # En cas d'échec de la connexion, renvoyer un message d'erreur
         return f"Erreur de connexion à la base de données : {str(e)}", 500
 
-
 # Route pour récupérer toutes les données de la table "athletes"
 @app.route('/athletes', methods=['GET'])
 def get_all_athletes():
     try:
         # Se connecter à la base de données
         conn = engine.connect()
+        limit = request.args.get('limit', default=100, type=int)
 
-        # Exécuter la requête pour récupérer toutes les entrées de la table "athletes"
-        query = text('SELECT * FROM "public"."olympic_athletes"')
-        result = conn.execute(query)
+        # Exécuter la requête pour récupérer les entrées de la table "athletes" avec une limite
+        query = text('SELECT * FROM "public"."olympic_athletes" LIMIT :limit')
+        result = conn.execute(query, {'limit': limit})
 
         # Convertir les résultats en format JSON et les renvoyer
         data = []
@@ -82,84 +85,6 @@ def get_all_athletes():
                 "bronze_medals": row[8]
             }
             data.append(athlete_dict)
-
-        # Fermer la connexion à la base de données
-        conn.close()
-        
-        return jsonify(data), 200
-
-    except OperationalError as e:
-        # En cas d'échec de la connexion, renvoyer un message d'erreur
-        return f"Erreur de connexion à la base de données : {str(e)}", 500
-
-
-# Route pour récupérer toutes les données de la table "hosts"
-@app.route('/hosts', methods=['GET'])
-def get_all_hosts():
-    try:
-        # Se connecter à la base de données
-        conn = engine.connect()
-
-        # Exécuter la requête pour récupérer toutes les entrées de la table "hosts"
-        query = text('SELECT * FROM "public"."olympic_hosts"')
-        result = conn.execute(query)
-
-        # Convertir les résultats en format JSON et les renvoyer
-        data = []
-        for row in result:
-            host_dict = {
-                "index": row[0],
-                "game_slug": row[1],
-                "game_end_date": row[2],
-                "game_start_date": row[3],
-                "game_location": row[4],
-                "game_name": row[5],
-                "game_season": row[6],
-                "game_year": row[7],
-                "start_year": row[8]
-            }
-            data.append(host_dict)
-
-        # Fermer la connexion à la base de données
-        conn.close()
-        
-        return jsonify(data), 200
-
-    except OperationalError as e:
-        # En cas d'échec de la connexion, renvoyer un message d'erreur
-        return f"Erreur de connexion à la base de données : {str(e)}", 500
-
-
-# Route pour récupérer toutes les données de la table "results"
-@app.route('/results', methods=['GET'])
-def get_all_results():
-    try:
-        # Se connecter à la base de données
-        conn = engine.connect()
-
-        # Exécuter la requête pour récupérer toutes les entrées de la table "results"
-        query = text('SELECT * FROM "public"."olympic_results"')
-        result = conn.execute(query)
-
-        # Convertir les résultats en format JSON et les renvoyer
-        data = []
-        for row in result:
-            result_dict = {
-                "discipline_title": row[0],
-                "event_title": row[1],
-                "slug_game": row[2],
-                "participant_type": row[3],
-                "medal_type": row[4],
-                "rank_equal": row[5],
-                "rank_position": row[6],
-                "country_name": row[7],
-                "country_code": row[8],
-                "country_3_letter_code": row[9],
-                "athlete_full_name": row[10],
-                "value_unit": row[11],
-                "value_type": row[12]
-            }
-            data.append(result_dict)
 
         # Fermer la connexion à la base de données
         conn.close()
