@@ -1,4 +1,4 @@
-// import './Footer.scss';
+import './Footer.scss';
 
 // Redux import 
 // Hooks
@@ -16,7 +16,7 @@ function Footer(props) {
     return (
         <>
 
-            {/* <section id="footer">
+            <section id="footer">
                 <div className='pinkLine'></div>
                 <div className='container'>
                     <div className='copyright'>
@@ -24,7 +24,7 @@ function Footer(props) {
                         <p className='description1'>@copyright MIA 13 IPSSI</p>
                     </div>
                 </div>
-            </section> */}
+            </section>
         </>
     );
 }
