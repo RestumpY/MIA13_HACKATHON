@@ -115,6 +115,39 @@ def get_all_athletes():
     except OperationalError as e:
         # En cas d'échec de la connexion, renvoyer un message d'erreur
         return f"Erreur de connexion à la base de données : {str(e)}", 500
+    
+
+
+@app.route('/hosts', methods=['GET'])
+def get_all_hosts():
+    try:
+        conn = engine.connect()
+        limit = request.args.get('limit', default=100, type=int)
+
+        query = text('SELECT * FROM "public"."olympic_hosts" LIMIT :limit')
+        result = conn.execute(query, {'limit': limit})
+
+        data = []
+        for row in result:
+            host_dict = {
+                "index": row[0],
+                "game_slug": row[1],
+                "game_end_date": row[2],
+                "game_start_date": row[3],
+                "game_location": row[4],
+                "game_name": row[5],
+                "game_season": row[6],
+                "game_year": row[7],
+                "start_year": row[8]
+            }
+            data.append(host_dict)
+
+        conn.close()
+        return jsonify(data), 200
+
+    except OperationalError as e:
+        return f"Erreur de connexion à la base de données : {str(e)}", 500
+
 
 if __name__ == "__main__":
     app.run(debug=True)

@@ -1,16 +1,11 @@
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
-import medals from '../../medals.json'; // Import direct du fichier JSON
 import { useState, useEffect } from 'react';
 import AthletesTable from '../../components/data/athelete/Athelete';
 import MedalsTable from '../../components/data/medal/Medal';
+import HostsTable from '../../components/data/hosts/Hosts';
 
 function TabData() {
-    const [medal, setMedal] = useState([]);
-
-    useEffect(() => {
-        setMedal(medals); // Utilisation directe des données importées
-    }, []);
 
     return (
         <Tabs
@@ -19,14 +14,14 @@ function TabData() {
             className="mb-3"
             fill
         >
-            <Tab eventKey="athelete" title="Atheletes">
+            <Tab eventKey="athelete" title="Athlètes">
                 <AthletesTable />
             </Tab>
             <Tab eventKey="medal" title="Médailles">
-                <MedalsTable />
+                <MedalsTable/>
             </Tab>
             <Tab eventKey="host" title="Pays d'accueil">
-                filtré par Saison
+                <HostsTable/>
             </Tab>
             <Tab eventKey="result" title="Résultats">
                 filtré par Saison
