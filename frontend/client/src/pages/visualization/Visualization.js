@@ -25,7 +25,7 @@ const Visualisations = () => {
             None={'none'} 
             />
                 <div>
-                    Page Visualisations
+                    <iframe title="Dashboard_JO" width="1500" height="1000" src="https://app.powerbi.com/reportEmbed?reportId=2cdbd5a9-9dea-4616-aeff-c71f927b4e9e&autoAuth=true&ctid=108bc864-cdf5-4ec3-8b7c-4eb06be1b41d" frameborder="0" allowFullScreen="true"></iframe>
                 </div>
             <Footer />
 
