@@ -7,6 +7,10 @@ from collections import defaultdict
 app = Flask(__name__)
 CORS(app)
 
+# Configuration du logger
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
 # Configuration de la connexion à la base de données PostgreSQL
 POSTGRES_USER = 'jo2024_fatima'
 POSTGRES_PASSWORD = 'Ipssi2024!'
