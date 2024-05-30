@@ -5,7 +5,7 @@ from flask_cors import CORS
 from collections import defaultdict
 
 app = Flask(__name__)
-CORS(app, origins='http://localhost:3001')
+CORS(app)
 
 # Configuration de la connexion à la base de données PostgreSQL
 POSTGRES_USER = 'jo2024_fatima'
@@ -354,6 +354,132 @@ def get_all_hosts():
         return f"Erreur de connexion à la base de données : {str(e)}", 500
 
 
+# Route pour récupérer toutes les données de la table "olympic_results"
+@app.route('/results', methods=['GET'])
+def get_all_results():
+    try:
+        # Se connecter à la base de données
+        conn = engine.connect()
+        
+        # Récupérer les disciplines, les types de participants, et les pays uniques de toute la table
+        query_disciplines = conn.execute(text("SELECT DISTINCT discipline_title FROM olympic_results ORDER BY discipline_title ASC"))
+        query_participant_types = conn.execute(text("SELECT DISTINCT participant_type FROM olympic_results ORDER BY participant_type ASC"))
+        query_countries = conn.execute(text("SELECT DISTINCT country_name FROM olympic_results ORDER BY country_name ASC"))
+        query_medal_types = conn.execute(text("SELECT DISTINCT medal_type FROM olympic_results ORDER BY medal_type ASC"))
+        query_slug_games = conn.execute(text("SELECT DISTINCT slug_game FROM olympic_results ORDER BY slug_game ASC"))
+
+        # Get unique data 
+        unique_disciplines = [row[0] for row in query_disciplines]
+        unique_participant_types = [row[0] for row in query_participant_types]
+        unique_countries = [row[0] for row in query_countries]
+        unique_medal_types = [row[0] for row in query_medal_types]
+        unique_slug_games = [row[0] for row in query_slug_games]
+
+        # Récupérer les paramètres de requête pour les filtres et la pagination
+        discipline_title = request.args.get('discipline_title', '')
+        participant_type = request.args.get('participant_type', '')
+        country_name = request.args.get('country_name', '')
+        medal_type = request.args.get('medal_type', '')
+        slug_game = request.args.get('slug_game', '')
+        limit = int(request.args.get('limit', 50))  # Limite par défaut à 50
+        page = int(request.args.get('page', 1))
+        sort_by = request.args.get('sort_by', default='discipline_title', type=str)
+        sort_order = request.args.get('sort_order', default='asc', type=str)
+
+        # Valider le champ de tri
+        valid_sort_columns = ['discipline_title', 'country_name', 'participant_type', 'athlete_full_name']
+        if sort_by not in valid_sort_columns:
+            return jsonify({"error": "Invalid sort column"}), 400
+
+        # Construire la requête de filtrage
+        filters = []
+        if discipline_title:
+            filters.append("discipline_title ILIKE :discipline_title")
+        if participant_type:
+            filters.append("participant_type ILIKE :participant_type")
+        if country_name:
+            filters.append("country_name ILIKE :country_name")
+        if medal_type:
+            filters.append("medal_type ILIKE :medal_type")
+        if slug_game:
+            filters.append("slug_game ILIKE :slug_game")
+
+        filter_query = ' AND '.join(filters) if filters else 'TRUE'
+        offset = (page - 1) * limit
+
+        query = text(f'''
+            SELECT * FROM "public"."olympic_results" 
+            WHERE {filter_query} 
+            ORDER BY {sort_by} {sort_order}
+            LIMIT :limit OFFSET :offset
+        ''')
+
+        # Récupérer le nombre total d'éléments correspondant aux filtres appliqués
+        total_items_query = text(f'''
+            SELECT COUNT(*) FROM "public"."olympic_results" 
+            WHERE {filter_query}
+        ''')
+
+        # Paramètres pour la requête
+        params = {
+            'discipline_title': f'%{discipline_title}%',
+            'participant_type': f'%{participant_type}%',
+            'country_name': f'%{country_name}%',
+            'medal_type': f'%{medal_type}%',
+            'slug_game': f'%{slug_game}%',
+            'limit': limit,
+            'offset': offset
+        }
+
+        result = conn.execute(query, params)
+        total_items_result = conn.execute(total_items_query, params)
+
+        # Convertir les résultats en format JSON
+        data = []
+        for row in result:
+            result_dict = {
+                "_c0": row[0],
+                "Unnamed: 0": row[1],
+                "discipline_title": row[2],
+                "event_title": row[3],
+                "slug_game": row[4],
+                "participant_type": row[5],
+                "medal_type": row[6],
+                "rank_equal": row[7],
+                "rank_position": row[8],
+                "country_name": row[9],
+                "country_code": row[10],
+                "country_3_letter_code": row[11],
+                "athlete_url": row[12],
+                "athlete_full_name": row[13],
+                "value_unit": row[14],
+                "value_type": row[15]
+            }
+            data.append(result_dict)
+        
+        # Récupérer le nombre total d'éléments à partir du résultat de la requête
+        total_items = total_items_result.fetchone()[0]
+
+        # Fermer la connexion à la base de données
+        conn.close()
+        
+        # Retourner les données ainsi que le nombre total d'éléments
+        return jsonify({
+            "results": data,
+            "unique_disciplines": unique_disciplines,
+            "unique_participant_types": unique_participant_types,
+            "unique_countries": unique_countries,
+            "unique_medal_types": unique_medal_types,
+            "unique_slug_games": unique_slug_games,
+            "total_items": total_items
+        }), 200
+
+    except OperationalError as e:
+        # En cas d'échec de la connexion, renvoyer un message d'erreur
+        return f"Erreur de connexion à la base de données : {str(e)}", 500
+    except IndexError as e:
+        # En cas d'erreur d'indexation, renvoyer un message d'erreur spécifique
+        return f"Erreur d'indexation : {str(e)}", 500
 
 if __name__ == "__main__":
     app.run(debug=True)
