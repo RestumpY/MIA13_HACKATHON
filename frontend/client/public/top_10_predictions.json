@@ -1,0 +1,12 @@
+[
+    {"Country": "United States of America", "TotalGold": 23, "TotalSilver": 21, "TotalBronze": 19, "TotalMedals": 63},
+    {"Country": "People's Republic of China", "TotalGold": 21, "TotalSilver": 20, "TotalBronze": 18, "TotalMedals": 59},
+    {"Country": "Great Britain", "TotalGold": 17, "TotalSilver": 16, "TotalBronze": 14, "TotalMedals": 47},
+    {"Country": "Japan", "TotalGold": 15, "TotalSilver": 14, "TotalBronze": 13, "TotalMedals": 43},
+    {"Country": "Germany", "TotalGold": 12, "TotalSilver": 12, "TotalBronze": 11, "TotalMedals": 35},
+    {"Country": "Australia", "TotalGold": 12, "TotalSilver": 11, "TotalBronze": 11, "TotalMedals": 34},
+    {"Country": "Netherlands", "TotalGold": 11, "TotalSilver": 11, "TotalBronze": 10, "TotalMedals": 32},
+    {"Country": "Italy", "TotalGold": 11, "TotalSilver": 11, "TotalBronze": 10, "TotalMedals": 31},
+    {"Country": "Russian Federation", "TotalGold": 11, "TotalSilver": 11, "TotalBronze": 9, "TotalMedals": 30},
+    {"Country": "France", "TotalGold": 10, "TotalSilver": 10, "TotalBronze": 9, "TotalMedals": 29}
+]
