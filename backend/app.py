@@ -5,10 +5,7 @@ from flask_cors import CORS
 from collections import defaultdict
 
 app = Flask(__name__)
-CORS(app)
 CORS(app, origins='http://localhost:3001')
-
-# CORS(app, resources={r"/*": {"origins": "http://localhost:3001"}})
 
 # Configuration de la connexion à la base de données PostgreSQL
 POSTGRES_USER = 'jo2024_fatima'
@@ -22,6 +19,11 @@ DATABASE_URL = f"postgresql://{POSTGRES_USER}:{POSTGRES_PASSWORD}@{POSTGRES_HOST
 
 # Créer un moteur SQLAlchemy pour la connexion à la base de données
 engine = create_engine(DATABASE_URL)
+
+# Route pour la page d'accueil
+@app.route('/')
+def home():
+    return jsonify({"message": "Bienvenue sur l'API des JO 2024!"}), 200
 
 # Route pour récupérer toutes les données de la table "olympic_medals"
 @app.route('/medals', methods=['GET'])
