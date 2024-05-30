@@ -56,9 +56,9 @@ const ResultsTable = () => {
         const fetchResults = async () => {
             setIsLoading(true);
             try {
-                const response = await axios.get('http://localhost:5000/results', 
+                const response = await axios.get('http://localhost:5000/results',
                     {
-                        params: { 
+                        params: {
                             discipline_title,
                             participant_type,
                             country_name,
@@ -157,9 +157,9 @@ const ResultsTable = () => {
                         <button onClick={toggleFilters} className="btn btn-primary">
                             <FontAwesomeIcon icon={faFilter} /> Filtre
                         </button>
-                        <select 
-                            value={limit} 
-                            onChange={handleLimitChange} 
+                        <select
+                            value={limit}
+                            onChange={handleLimitChange}
                             className="form-select ml-2"
                             style={{ width: '100px', display: 'inline-block' }}
                         >
@@ -173,11 +173,11 @@ const ResultsTable = () => {
                     <div className="filter-section">
                         <div className="filter-column">
                             <select
-                            className="form-select ml-2 mb-2"
-                            name="discipline_title"
-                            value={filters.discipline_title}
-                            onChange={handleFilterChange}
-                        >
+                                className="form-select ml-2 mb-2"
+                                name="discipline_title"
+                                value={filters.discipline_title}
+                                onChange={handleFilterChange}
+                            >
                                 <option value="">Sélectionner par discipline</option>
                                 {disciplines && disciplines.map((discipline) => (
                                     <option key={discipline} value={discipline}>
@@ -188,11 +188,11 @@ const ResultsTable = () => {
                         </div>
                         <div className="filter-column">
                             <select
-                            className="form-select ml-2 mb-2"
-                            name="participant_type"
-                            value={filters.participant_type}
-                            onChange={handleFilterChange}
-                        >
+                                className="form-select ml-2 mb-2"
+                                name="participant_type"
+                                value={filters.participant_type}
+                                onChange={handleFilterChange}
+                            >
                                 <option value="">Sélectionner par type de participant</option>
                                 {participantTypes && participantTypes.map((type) => (
                                     <option key={type} value={type}>
@@ -203,11 +203,11 @@ const ResultsTable = () => {
                         </div>
                         <div className="filter-column">
                             <select
-                            className="form-select ml-2 mb-2"
-                            name="country_name"
-                            value={filters.country_name}
-                            onChange={handleFilterChange}
-                        >
+                                className="form-select ml-2 mb-2"
+                                name="country_name"
+                                value={filters.country_name}
+                                onChange={handleFilterChange}
+                            >
                                 <option value="">Sélectionner par pays</option>
                                 {countries && countries.map((country) => (
                                     <option key={country} value={country}>
@@ -218,11 +218,11 @@ const ResultsTable = () => {
                         </div>
                         <div className="filter-column">
                             <select
-                            className="form-select ml-2 mb-2"
-                            name="medal_type"
-                            value={filters.medal_type}
-                            onChange={handleFilterChange}
-                        >
+                                className="form-select ml-2 mb-2"
+                                name="medal_type"
+                                value={filters.medal_type}
+                                onChange={handleFilterChange}
+                            >
                                 <option value="">Sélectionner par type de médaille</option>
                                 {medalTypes && medalTypes.map((medal) => (
                                     <option key={medal} value={medal}>
@@ -233,11 +233,11 @@ const ResultsTable = () => {
                         </div>
                         <div className="filter-column">
                             <select
-                            className="form-select ml-2 mb-2"
-                            name="slug_game"
-                            value={filters.slug_game}
-                            onChange={handleFilterChange}
-                        >
+                                className="form-select ml-2 mb-2"
+                                name="slug_game"
+                                value={filters.slug_game}
+                                onChange={handleFilterChange}
+                            >
                                 <option value="">Sélectionner par jeu</option>
                                 {slugGames && slugGames.map((game) => (
                                     <option key={game} value={game}>

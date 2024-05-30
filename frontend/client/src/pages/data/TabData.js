@@ -9,25 +9,25 @@ import ResultsTable from '../../components/data/results/Results';
 function TabData() {
 
     return (
-           <Tabs
+        <Tabs
             defaultActiveKey="athlete"
             id="fill-tab-example"
-            className="mb-3 tabs"
+            className="tabs"
             fill
-       >
-           <Tab  eventKey="athlete" title="Athlètes">
-               <AthletesTable />
-           </Tab>
-           <Tab eventKey="medal" title="Médailles">
-               <MedalsTable />
-           </Tab>
-           <Tab eventKey="host" title="Pays d'accueil">
-               <HostsTable />
-           </Tab>
-           <Tab eventKey="results" title="Résultats">
-               <ResultsTable />
-           </Tab>
-       </Tabs>
+        >
+            <Tab eventKey="athlete" title="Athlètes">
+                <AthletesTable />
+            </Tab>
+            <Tab eventKey="medal" title="Médailles">
+                <MedalsTable />
+            </Tab>
+            <Tab eventKey="host" title="Pays d'accueil">
+                <HostsTable />
+            </Tab>
+            <Tab eventKey="results" title="Résultats">
+                <ResultsTable />
+            </Tab>
+        </Tabs>
     );
 }
 

@@ -1,10 +1,12 @@
 import React from "react";
 import Menu from "../../components/menu/Menu";
 import Header from "../../components/header/Header";
-import "./Home.css"
+import "./Home.scss"
 import Card from "../../components/card/Card";
 import Footer from "../../components/footer/Footer";
 import BackgroundBody from "../../components/test/test";
+import { Link } from "react-router-dom";
+import { MdOutlineArrowOutward } from "react-icons/md";
 
 
 const Home = () => {
@@ -12,11 +14,11 @@ const Home = () => {
     // CONSTANTES
     const title = (
         <>
-            <span className="addRed">120 years</span> of olympics history, <br></br>
-            now let's predict <span className="addBlue">paris 2024 !</span>
+            <span className="addRed"> Après 120 ans</span> d'histoire de jeux olympiques, <br></br>
+            prédisons le future des jeux <span className="addBlue">paris 2024 !</span>
         </>
     )
-    const description = "BIENVENUE AUX JEUX OLYMPIQUES HISTORIQUES"
+    const description = "BIENVENUE AUX HISTORIQUES DES JEUX OLYMPIQUES "
 
 
     return (
@@ -57,6 +59,20 @@ const Home = () => {
                     </ul>
                     Plongez dans l'histoire riche et passionnante des Jeux Olympiques !
                 </p>
+                <div className="linkContainer">
+                    <Link className="linkGit" target="blank" to={'https://github.com/RestumpY/MIA13_HACKATHON'}>
+                        Lien github
+                        <MdOutlineArrowOutward className="iconeLink" />
+                    </Link>
+                    <Link className="linkTrello" target="blank" to={'https://trello.com/b/ZXgohXYQ/hackathon-team-13'}>
+                        Lien Trello
+                        <MdOutlineArrowOutward className="iconeLink" />
+                    </Link>
+                    <Link className="linkNotion" target="blank" to={'https://www.notion.so/G-n-ral-05f11786e220467f9c210d8ff2a33078'}>
+                        Lien Notion
+                        <MdOutlineArrowOutward className="iconeLink" />
+                    </Link>
+                </div>
             </div>
             <div id="team">
                 <img className="imgTeam" src="https://olympics.com/athlete365/app/uploads/2023/01/FieldOfPlay-scaled.jpg" />
