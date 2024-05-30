@@ -51,7 +51,7 @@ const HostsTable = () => {
         const fetchHosts = async () => {
             setIsLoading(true);
             try {
-                const response = await axios.get('http://localhost:5000/hosts', 
+                const response = await axios.get('https://mia13-hackathon.onrender.com/hosts', 
                     {
                         params: { 
                             game_season,
