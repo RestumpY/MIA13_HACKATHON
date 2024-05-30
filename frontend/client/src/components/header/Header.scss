@@ -1,0 +1,130 @@
+.header {
+    width: 100%;
+    // height: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow-y: hidden;
+    padding-bottom: 8em;
+    gap: 20px;
+
+    // background-image: linear-gradient(rgba(6, 7, 7, 0) 10%, rgb(6, 6, 7)), url('https://i.pinimg.com/564x/b3/d6/18/b3d618735641b2bad3e2e65e79a3b7a5.jpg');
+    // background-repeat: no-repeat;
+    // background-position: center;
+    // background-size: cover;
+    // https://images.pexels.com/photos/18119175/pexels-photo-18119175/free-photo-of-ville-gens-personnes-individus.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1
+    .title {
+        font-size: 3em;
+        text-transform: uppercase;
+        color: transparent;
+        /* Le texte est transparent au début */
+        position: relative;
+        animation: smoke 5s forwards;
+
+        /* Animation pour le texte */
+        .addRed {
+            color: red;
+        }
+
+        .addBlue {
+            color: #1A2F7A;
+        }
+
+    }
+
+    /* Animation pour le texte */
+    @keyframes smoke {
+        0% {
+            color: transparent;
+            top: 100%;
+            /* Le texte commence en bas de la fenêtre */
+        }
+
+        100% {
+            // color: #141414;
+            /* Couleur finale du texte */
+            top: 50%;
+            /* Le texte monte jusqu'à la moitié de la fenêtre */
+        }
+    }
+
+    .description {
+        text-align: center;
+        width: 800px;
+        font-family: 'Inter';
+        font-weight: 400;
+        font-size: 1.2rem;
+        // color: rgb(17, 17, 17);
+    }
+
+    .heroImage {
+        width: 340px;
+        position: absolute;
+        right: 0;
+        // margin-right: 160px;
+        margin-left: 230px;
+        top: 90px;
+        opacity: 0.8;
+        z-index: 0;
+    }
+
+    .separator {
+        width: 150px;
+        height: 4px;
+        background-color: #B1B1B1;
+        position: absolute;
+        bottom: 0;
+        margin: auto;
+    }
+}
+
+
+// .header{
+//     width: 100%;
+//     // height: 450px;
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: center;
+//     align-items: center;
+//     position: relative;
+//     overflow-y: hidden;
+//     padding-bottom: 8em;
+//     background-color: #1a1a1a;
+//     .title{
+//         color: rgb(255, 255, 255);
+//         text-transform: uppercase;
+//         .addRed{
+//             color: #C1F6BC;
+//         }
+//         .addBlue{
+//             color: #ADCD52;
+//         }
+//     }
+//     .description{
+//         text-align: center;
+//         width: 800px;
+//         font-family: 'Montserrat';
+//         font-weight: 600;
+//         font-size: 1.2rem;
+//         color: rgb(255, 255, 255);
+//     }
+//     .heroImage{
+//         width: 340px;
+//         position: absolute;
+//         right: 0;
+//         margin-right: 160px;
+//         top: 90px;
+//         opacity: 0.8;
+//         z-index: 0;
+//     }
+//     .separator{
+//         width: 150px;
+//         height: 3px;
+//         background-color: #B1B1B1;
+//         position: absolute;
+//         bottom: 0;
+//         margin: auto;
+//     }
+// }

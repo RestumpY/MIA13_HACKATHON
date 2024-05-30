@@ -4,19 +4,33 @@ import Header from "../../components/header/Header";
 import "./Home.css"
 import Card from "../../components/card/Card";
 import Footer from "../../components/footer/Footer";
+import BackgroundBody from "../../components/test/test";
 
 
 const Home = () => {
+
+    // CONSTANTES
     const title = (
         <>
-            <span className="red">120 years of olympics</span> history, Now let’s predict <span className="blue">Paris 2024 !</span>
-        </>)
-    const description = "Welcome to the official ticketing website of the Paris 2024 Olympic and Paralympic Games!"
-    const imgUrl = "https://cdn.pixabay.com/photo/2020/05/10/18/30/olympics-5155137_1280.png"
+            <span className="addRed">120 years</span> of olympics history, <br></br>
+            now let's predict <span className="addBlue">paris 2024 !</span>
+        </>
+    )
+    const description = " Welcome to the official ticketing website of the Paris 2024 Olympic and Paralympic Games! To log in to your account or create one, click below."
+
+
     return (
         <>
+            <BackgroundBody />
+            <Header children={<Menu />}
+                title={title}
+                description={description}
+                imageUrl={'https://cdn.pixabay.com/photo/2020/05/10/18/30/olympics-5155137_1280.png'}
+                backgroundImage={''}
+                gradientCode={''}
+                color={'black'}
+                />
 
-            <Header Children={<Menu />} title={title} description={description} imgUrl={imgUrl} />
             <div id="projectDescription">
                 <h3 className="titleObjectif"> Objectifs du projet</h3>
                 <p className="descriptionObjectif"> 1. Analyze and create visualizations on an Olympic dataset from 1896 to 2016 to uncover which countries

@@ -1,16 +1,59 @@
+@import url(https://db.onlinewebfonts.com/c/a944a4a34682afada21d42c79d15deea?family=Paris2024);
+@import url(https://db.onlinewebfonts.com/c/b84eb26a3af45db5af2689f71b93b580?family=Paris2024+Semibold);
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
 body {
-  margin: 0;
-    width: 100%;
-    margin: auto !important;
-    border: 1px solid #B1B1B1;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-      sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  border: 1.1px #d7c378 dotted;
+  background: linear-gradient(to left, #f5faff, white) !important;
+  overflow-x: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* background-color: #F4F2EE !important; */
+  margin: auto !important;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+h1,
+h2 {
+  font-family: 'Paris2024 Semibold';
+  font-weight: 800 !important;
+  font-size: 3.5rem !important;
+  text-align: center;
+  padding-top: 1.5em;
+  margin-bottom: 0px !important;
+  letter-spacing: 1px;
+  letter-spacing: 0.2px;
+}
+
+h3 {
+  font-family: 'Paris2024 Semibold';
+  font-weight: 800 !important;
+  font-size: 1.4rem;
+  text-align: center;
+  padding-top: 1.0em;
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
+  letter-spacing: 1px;
+  letter-spacing: 0.2px;
+  width: 90%;
+
+}
+
+.tabs{
+background-color: #e6e6e6;
+border-bottom: 1px black solid;
+color: black;
+text-decoration: none;
 }

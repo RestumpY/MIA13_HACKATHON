@@ -22,7 +22,7 @@
     content: "IPSSI";
     text-transform: uppercase;
     font-family: "Paris2024 Semibold";
-    font-size: 6.2em;
+    font-size: 5.2em;
     position: absolute;
     left: 0;
     margin-left: -20px;
@@ -33,13 +33,14 @@
 }
 
 .descriptionObjectif {
-    font-family: "Montserrat";
+    font-family: "Inter";
     font-size: 1.2rem;
-    font-weight: 600;
+    font-weight: 300;
     text-align: left;
-    padding-top: 0.8;
+    padding-top: 1.4rem;
 }
 
+/* CSS : SECTION CARD  */
 #team {
     width: 100%;
     display: flex;
@@ -97,18 +98,19 @@
 
 .card {
     background-color: white;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, .2);
     display: flex;
     flex-direction: column;
-    border-radius: 20px !important;
+    /* border-radius: 20px !important; */
     border: 6px solid white !important;
     overflow: hidden;
-    transition: 0.4 ease-in-out;
+    transition: 0.8 ease-in-out;
     margin: 6px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .12);
 }
 
 .card:hover {
     transform: scale(1.1);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, .12);
 }
 
 .avatarContainer {
@@ -149,6 +151,8 @@
     margin-bottom: 0px !important;
 }
 
+
+/* CSS : SECTION FEEDBACK */
 #projectFeedback {
     width: 85% !important;
     display: flex;
@@ -182,25 +186,29 @@
     content: "HACKATHON";
     text-transform: uppercase;
     font-family: "Paris2024 Semibold";
-    font-size: 6.2em;
+    font-size: 4.2em;
     position: absolute;
     left: 0;
     letter-spacing: -15px;
     -webkit-text-stroke: 2px #FBA9CB;
+    /* text-shadow: 1px 1px 0 #111111, 3px 3px 0 #111111, 5px 5px 0 #111111, 7px 7px 0 #111111; */
     color: transparent;
-    opacity: 0.3;
+    opacity: 0.2;
     margin-left: -20px;
+    stroke-width: 2px;
+    stroke-dasharray: 4;
+    /* This creates the dotted effect */
+    opacity: 0.2;
 }
 
 .descriptionFeedback {
-    font-family: "Montserrat";
+    font-family: "Inter";
     font-size: 1.2rem;
-    font-weight: 600;
+    font-weight: 300;
     text-align: left;
-    padding-top: 0.8;
+    padding-top: 1.4rem;
 }
 
 .logoJO {
     width: 150px;
-    margin-right: -50px;
 }
