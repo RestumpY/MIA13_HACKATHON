@@ -8,25 +8,22 @@ import HostsTable from '../../components/data/hosts/Hosts';
 function TabData() {
 
     return (
-        <Tabs
-            defaultActiveKey="athelete"
+           <Tabs
+            defaultActiveKey="athlete"
             id="fill-tab-example"
-            className="mb-3"
+            className="mb-3 tabs"
             fill
-        >
-            <Tab eventKey="athelete" title="Athlètes">
-                <AthletesTable />
-            </Tab>
-            <Tab eventKey="medal" title="Médailles">
-                <MedalsTable/>
-            </Tab>
-            <Tab eventKey="host" title="Pays d'accueil">
-                <HostsTable/>
-            </Tab>
-            <Tab eventKey="result" title="Résultats">
-                filtré par Saison
-            </Tab>
-        </Tabs>
+       >
+           <Tab  eventKey="athlete" title="Athlètes">
+               <AthletesTable />
+           </Tab>
+           <Tab eventKey="medal" title="Médailles">
+               <MedalsTable />
+           </Tab>
+           <Tab eventKey="host" title="Pays d'accueil">
+               <HostsTable />
+           </Tab>
+       </Tabs>
     );
 }
 

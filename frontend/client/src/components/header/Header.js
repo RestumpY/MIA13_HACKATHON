@@ -9,11 +9,13 @@ function Header({
     children,
     title,
     description,
+    descriptionColor,
     imageUrl,
     gradientCode,
     backgroundImage,
     color,
-    None }) {
+    None, 
+    Separator }) {
     // STATE
 
     // FUNCTIONS
@@ -36,13 +38,15 @@ function Header({
                     style={{ color: color }}
 
                 >{title}</h2>
-                <p className='description'>{description}</p>
+                <p className='description' style={{color: descriptionColor}}>{description}</p>
                 <img
                     className='heroImage'
                     style={{ display: None }}
                     src={imageUrl}
                     alt='header image' />
-                <div className='separator'></div>
+                <div 
+                className='separator'
+                style={{display : Separator}} ></div>
             </div>
         </>
     );

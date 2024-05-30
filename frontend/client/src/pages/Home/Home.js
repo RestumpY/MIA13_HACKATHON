@@ -27,7 +27,9 @@ const Home = () => {
                 description={description}
                 imageUrl={'https://cdn.pixabay.com/photo/2020/05/10/18/30/olympics-5155137_1280.png'}
                 backgroundImage={''}
-                gradientCode={''} />
+                gradientCode={''}
+                color={'black'}
+                />
 
             <div id="projectDescription">
                 <h3 className="titleObjectif"> Objectifs du projet</h3>

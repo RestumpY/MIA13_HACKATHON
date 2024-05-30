@@ -48,19 +48,19 @@ function Menu(props) {
                         alt='logo olympics 2024' />
                     <div className='linkContainer'>
                         <Link className={`link ${location.pathname === '/' ? 'activeLink' : ''}`} to={'/'}>
-                            Home
+                            Accueil
                         </Link>
                         <Link className={`link ${location.pathname === '/data' ? 'activeLink' : ''}`} to={'/data'}>
                             Data
                         </Link>
                         <Link className={`link ${location.pathname === '/visualisations' ? 'activeLink' : ''}`} to={'/visualisations'}>
-                            Vizualisations
+                            Visualisations
                         </Link>
                         <Link className={`link ${location.pathname === '/analysis' ? 'activeLink' : ''}`} to={'/analysis'}>
-                            Analysis
+                            Analyses
                         </Link>
                         <Link className={`link ${location.pathname === '/predictions' ? 'activeLink' : ''}`} to={'/predictions'}>
-                            Olympics predictions
+                            Predictions
                         </Link>
                     </div>
                 </div>

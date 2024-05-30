@@ -19,16 +19,18 @@ const Data = () => {
                 children={<Menu />}
                 title={title}
                 description={description}
-                gradientCode={''} // Corrected gradient code rgba(6, 7, 7, 0) 10%, rgb(6, 6, 7)
-                backgroundImage={''}
-                color={' black '}
-                None={'none'} />
+                gradientCode={'rgba(6, 7, 7, 0) 10%, rgb(6, 6, 7)'} // Corrected gradient code rgba(6, 7, 7, 0) 10%, rgb(6, 6, 7)
+                backgroundImage={'https://images.pexels.com/photos/18119175/pexels-photo-18119175/free-photo-of-ville-gens-personnes-individus.jpeg'}
+                color={' white '}
+                descriptionColor={"white"}
+                None={'none'} 
+                Separator={'none'}/>
             <div>
                 <TabData />
             </div>
-            {/* <div>
+            <div>
                 <Footer />
-            </div> */}
+            </div>
         </>)
 }
 export default Data;

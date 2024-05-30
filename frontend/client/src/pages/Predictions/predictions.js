@@ -5,7 +5,7 @@ import Footer from "../../components/footer/Footer";
 import BackgroundBody from "../../components/test/test";
 
 
-const Visualisations = () => {
+const Predictions = () => {
     // STATE
 
     // CONSTANTES
@@ -16,19 +16,19 @@ const Visualisations = () => {
         <>
             <BackgroundBody />
             <Header children={<Menu />} 
-            title={'Take a deep dive into our Visualisations'} 
+            title={'Take a deep dive into our Predictions'} 
             description={''} 
-            descriptionColor={"black"}
+            descriptionColor={'black'}
             imageUrl={''}
-            backgroundImage={backgroundImage} 
-            color={"black"}
+            backgroundImage={backgroundImage}
+            color={'black'}
             None={'none'} 
-            />
+             />
                 <div>
-                    Page Visualisations
+                    Page Predictions
                 </div>
             <Footer />
 
         </>)
 }
-export default Visualisations;
+export default Predictions;
