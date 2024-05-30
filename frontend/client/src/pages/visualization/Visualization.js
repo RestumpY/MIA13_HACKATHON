@@ -3,6 +3,7 @@ import Menu from "../../components/menu/Menu";
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
 import BackgroundBody from "../../components/test/test";
+import PowerBIDashboard from "../../components/powerBiDashboard/PowerBiDashboard";
 
 
 const Visualisations = () => {
@@ -15,18 +16,10 @@ const Visualisations = () => {
     return (
         <>
             <BackgroundBody />
-            <Header children={<Menu />} 
-            title={'Take a deep dive into our Visualisations'} 
-            description={''} 
-            descriptionColor={"black"}
-            imageUrl={''}
-            backgroundImage={backgroundImage} 
-            color={"black"}
-            None={'none'} 
-            />
-                <div>
-                    <iframe title="Dashboard_JO" width="1500" height="1000" src="https://app.powerbi.com/reportEmbed?reportId=2cdbd5a9-9dea-4616-aeff-c71f927b4e9e&autoAuth=true&ctid=108bc864-cdf5-4ec3-8b7c-4eb06be1b41d" frameborder="0" allowFullScreen="true"></iframe>
-                </div>
+            <Menu />
+            <div>
+                <PowerBIDashboard />
+            </div>
             <Footer />
 
         </>)
