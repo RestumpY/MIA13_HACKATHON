@@ -58,7 +58,24 @@ const PredictionsChart = () => {
     return (
         <div>
             <h2>Prédiction des médailles pour les JO2020</h2>
-            {chartData ? <Line data={chartData} /> : <div>No data available</div>}
+            {chartData ? (
+                <Line
+                    data={chartData}
+                    options={{
+                        responsive: true,
+                        scales: {
+                            x: {
+                                ticks: {
+                                    maxRotation: 90,
+                                    minRotation: 45,
+                                },
+                            },
+                        },
+                    }}
+                />
+            ) : (
+                <div>No data available</div>
+            )}
         </div>
     );
 };
