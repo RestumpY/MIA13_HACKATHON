@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import AthletesTable from '../../components/data/athelete/Athelete';
 import MedalsTable from '../../components/data/medal/Medal';
 import HostsTable from '../../components/data/hosts/Hosts';
+import ResultsTable from '../../components/data/results/Results';
 
 function TabData() {
 
@@ -22,6 +23,9 @@ function TabData() {
            </Tab>
            <Tab eventKey="host" title="Pays d'accueil">
                <HostsTable />
+           </Tab>
+           <Tab eventKey="results" title="Résultats">
+               <ResultsTable />
            </Tab>
        </Tabs>
     );
