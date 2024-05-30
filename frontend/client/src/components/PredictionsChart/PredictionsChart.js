@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { Line } from 'react-chartjs-2';
 import 'chart.js/auto';
+import './PredictionsChart.css'; // Assurez-vous d'importer le fichier CSS
 
 const PredictionsChart = () => {
     const [chartData, setChartData] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+    const [loadingChart, setLoadingChart] = useState(true);
+    const [errorChart, setErrorChart] = useState(null);
+    const [tableData, setTableData] = useState([]);
+    const [loadingTable, setLoadingTable] = useState(true);
+    const [errorTable, setErrorTable] = useState(null);
 
     useEffect(() => {
-        // Charger les données JSON
+        // Charger les données JSON pour le graphique
         fetch('/predictions.json')  // Assurez-vous que le fichier JSON est placé dans le répertoire public
             .then(response => {
                 if (!response.ok) {
@@ -39,25 +43,46 @@ const PredictionsChart = () => {
                         },
                     ],
                 });
-                setLoading(false);
+                setLoadingChart(false);
             })
             .catch(error => {
-                setError(error);
-                setLoading(false);
+                setErrorChart(error);
+                setLoadingChart(false);
+            });
+
+        // Charger les données JSON pour le tableau
+        fetch('/top_10_predictions.json')  // Assurez-vous que le fichier JSON est placé dans le répertoire public
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                setTableData(data);
+                setLoadingTable(false);
+            })
+            .catch(error => {
+                setErrorTable(error);
+                setLoadingTable(false);
             });
     }, []);
 
-    if (loading) {
+    if (loadingChart || loadingTable) {
         return <div>Loading...</div>;
     }
 
-    if (error) {
-        return <div>Error: {error.message}</div>;
+    if (errorChart) {
+        return <div>Error loading chart data: {errorChart.message}</div>;
+    }
+
+    if (errorTable) {
+        return <div>Error loading table data: {errorTable.message}</div>;
     }
 
     return (
-        <div>
-            <h2>Prédiction des médailles pour les JO2020</h2>
+        <div className="predictions-container">
+            <h2>Prédiction des médailles pour les JO 2024</h2>
             {chartData ? (
                 <Line
                     data={chartData}
@@ -76,6 +101,29 @@ const PredictionsChart = () => {
             ) : (
                 <div>No data available</div>
             )}
+            <h3>Top 10 des pays au JO2024</h3>
+            <table className="styled-table">
+                <thead>
+                    <tr>
+                        <th>Country</th>
+                        <th>Gold</th>
+                        <th>Silver</th>
+                        <th>Bronze</th>
+                        <th>Total de médailles</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {tableData.map((row, index) => (
+                        <tr key={index}>
+                            <td>{row.Country}</td>
+                            <td>{row.TotalGold}</td>
+                            <td>{row.TotalSilver}</td>
+                            <td>{row.TotalBronze}</td>
+                            <td>{row.TotalMedals}</td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
         </div>
     );
 };
