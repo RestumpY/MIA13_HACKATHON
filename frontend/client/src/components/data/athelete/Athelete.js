@@ -53,7 +53,7 @@ const AthletesTable = () => {
             setIsLoading(true);
             try {
                 const response = await axios.get('http://localhost:5000/athletes', {
-                    params: { 
+                    params: {
                         athlete_full_name,
                         athlete_year_birth,
                         first_game,
@@ -80,7 +80,7 @@ const AthletesTable = () => {
         };
 
         fetchAthletes();
-    }, [location.search]); 
+    }, [location.search]);
 
 
     // FUNCTIONS 
@@ -146,9 +146,9 @@ const AthletesTable = () => {
                         <button onClick={toggleFilters} className="btn btn-primary">
                             <FontAwesomeIcon icon={faFilter} /> Filtre
                         </button>
-                        <select 
-                            value={limit} 
-                            onChange={handleLimitChange} 
+                        <select
+                            value={limit}
+                            onChange={handleLimitChange}
                             className="form-select ml-2"
                             style={{ width: '100px', display: 'inline-block' }}
                         >
@@ -163,11 +163,11 @@ const AthletesTable = () => {
                         {/* Première colonne de sélecteurs */}
                         <div className="filter-column">
                             <select
-                            className="form-select ml-2 mb-2"
-                            name="athlete_year_birth"
-                            value={filters.athlete_year_birth}
-                            onChange={handleFilterChange}
-                        >
+                                className="form-select ml-2 mb-2"
+                                name="athlete_year_birth"
+                                value={filters.athlete_year_birth}
+                                onChange={handleFilterChange}
+                            >
                                 <option value="">Sélectionner une année</option>
                                 {athletesBirth && athletesBirth.map((birth) => (
                                     <option key={birth} value={birth}>
@@ -178,12 +178,12 @@ const AthletesTable = () => {
                         </div>
                         {/* Deuxieme colonne de sélecteurs */}
                         <div className="filter-column">
-                        <select
-                            className="form-select ml-2 mb-2"
-                            name="first_game"
-                            value={filters.first_game}
-                            onChange={handleFilterChange}
-                        >
+                            <select
+                                className="form-select ml-2 mb-2"
+                                name="first_game"
+                                value={filters.first_game}
+                                onChange={handleFilterChange}
+                            >
                                 <option value="">Rechercher par premier jeux</option>
                                 {firstAthGames && firstAthGames.map((game) => (
                                     <option key={game} value={game}>
@@ -217,14 +217,14 @@ const AthletesTable = () => {
                         <th onClick={() => handleSort('bronze_medals')}>Médailles de Bronze {renderSortIcon('bronze_medals')}</th>
                     </tr>
                 </thead>
-                
+
                 <tbody>
                     {isLoading ? (
                         <tr><td colSpan="7">Loading...</td></tr>
                     ) : (
                         athletes.map((athlete, index) => (
                             <tr key={index}>
-                                <td><a href={athlete.athlete_url} target="_blank" rel="noopener noreferrer">{athlete.athlete_full_name}</a></td>
+                                <td><a href={athlete.athlete_url} target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none", color: "white", hover: "pointer" }}>{athlete.athlete_full_name}</a></td>
                                 <td>{athlete.games_participations}</td>
                                 <td>{athlete.first_game}</td>
                                 <td>{athlete.athlete_year_birth}</td>
