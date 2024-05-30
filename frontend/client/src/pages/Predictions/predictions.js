@@ -25,7 +25,6 @@ const Predictions = () => {
                 None={'none'} 
             />
             <div>
-                <h2>Page Predictions</h2>
                 <PredictionsChart />
             </div>
             <Footer />

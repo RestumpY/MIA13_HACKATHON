@@ -82,7 +82,7 @@ const PredictionsChart = () => {
 
     return (
         <div className="predictions-container">
-            <h2>Prédiction des médailles pour les JO 2024</h2>
+            <h2>Prédiction des médailles pour les JO 2020</h2>
             {chartData ? (
                 <Line
                     data={chartData}
@@ -101,7 +101,7 @@ const PredictionsChart = () => {
             ) : (
                 <div>No data available</div>
             )}
-            <h3>Top 10 des pays au JO2024</h3>
+            <h2>Top 10 des pays au JO 2024</h2>
             <table className="styled-table">
                 <thead>
                     <tr>
@@ -109,7 +109,7 @@ const PredictionsChart = () => {
                         <th>Gold</th>
                         <th>Silver</th>
                         <th>Bronze</th>
-                        <th>Total de médailles</th>
+                        <th>Total</th>
                     </tr>
                 </thead>
                 <tbody>
