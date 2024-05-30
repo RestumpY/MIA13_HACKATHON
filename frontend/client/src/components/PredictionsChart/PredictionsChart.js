@@ -8,8 +8,7 @@ const PredictionsChart = () => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        // Charger les données JSON
-        fetch('/predictions.json')  // Assurez-vous que le fichier JSON est placé dans le répertoire public
+        fetch('/predictions.json')
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
