@@ -3,6 +3,7 @@ from sqlalchemy import create_engine, text
 from sqlalchemy.exc import OperationalError
 from flask_cors import CORS
 from collections import defaultdict
+import logging
 
 app = Flask(__name__)
 CORS(app)
