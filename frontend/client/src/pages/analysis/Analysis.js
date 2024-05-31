@@ -26,6 +26,11 @@ const Analysis = () => {
                 <div>
                     Page Analysis
                 </div>
+
+                <div style={{ textAlign: 'center', marginTop: '20px', fontStyle: 'italic' }}>
+                Cette page est en maintenance.
+            </div>
+
             <Footer />
 
         </>)
