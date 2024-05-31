@@ -56,7 +56,7 @@ const ResultsTable = () => {
         const fetchResults = async () => {
             setIsLoading(true);
             try {
-                const response = await axios.get('http://localhost:5000/results',
+                const response = await axios.get('https://mia13-hackathon.onrender.com/results',
                     {
                         params: {
                             discipline_title,

@@ -14,16 +14,7 @@ const Predictions = () => {
     return (
         <>
             <BackgroundBody />
-            <Header 
-                children={<Menu />} 
-                title={'Take a deep dive into our Predictions'} 
-                description={''} 
-                descriptionColor={'black'}
-                imageUrl={''}
-                backgroundImage={backgroundImage}
-                color={'black'}
-                None={'none'} 
-            />
+            <Menu />
             <div>
                 <PredictionsChart />
             </div>

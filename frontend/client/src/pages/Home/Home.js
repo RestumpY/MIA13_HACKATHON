@@ -15,7 +15,7 @@ const Home = () => {
     const title = (
         <>
             <span className="addRed"> Après 120 ans</span> d'histoire de jeux olympiques, <br></br>
-            prédisons le future des jeux <span className="addBlue">paris 2024 !</span>
+            prédisons le futur des jeux <span className="addBlue">paris 2024 !</span>
         </>
     )
     const description = "BIENVENUE AUX HISTORIQUES DES JEUX OLYMPIQUES "
