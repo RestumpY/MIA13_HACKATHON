@@ -52,7 +52,7 @@ const AthletesTable = () => {
         const fetchAthletes = async () => {
             setIsLoading(true);
             try {
-                const response = await axios.get('http://localhost:5000/athletes', {
+                const response = await axios.get('https://mia13-hackathon.onrender.com/athletes', {
                     params: {
                         athlete_full_name,
                         athlete_year_birth,

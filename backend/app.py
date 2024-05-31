@@ -3,9 +3,15 @@ from sqlalchemy import create_engine, text
 from sqlalchemy.exc import OperationalError
 from flask_cors import CORS
 from collections import defaultdict
+import logging
+import os
 
 app = Flask(__name__)
 CORS(app)
+
+# Configuration du logger
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 # Configuration de la connexion à la base de données PostgreSQL
 POSTGRES_USER = 'jo2024_fatima'
@@ -482,4 +488,5 @@ def get_all_results():
         return f"Erreur d'indexation : {str(e)}", 500
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port, debug=True)

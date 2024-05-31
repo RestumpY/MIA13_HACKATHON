@@ -66,7 +66,7 @@ const MedalsTable = () => {
         const fetchMedals = async () => {
             setIsLoading(true);
             try {
-                const response = await axios.get('http://localhost:5000/medals', { 
+                const response = await axios.get('https://mia13-hackathon.onrender.com/medals', { 
                     params: {
                         page, 
                         country_name, 

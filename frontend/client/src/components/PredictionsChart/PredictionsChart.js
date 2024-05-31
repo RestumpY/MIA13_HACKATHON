@@ -10,6 +10,9 @@ const PredictionsChart = () => {
     const [tableData, setTableData] = useState([]);
     const [loadingTable, setLoadingTable] = useState(true);
     const [errorTable, setErrorTable] = useState(null);
+    const [franceChartData, setFranceChartData] = useState(null);
+    const [loadingFranceChart, setLoadingFranceChart] = useState(true);
+    const [errorFranceChart, setErrorFranceChart] = useState(null);
 
     useEffect(() => {
         // Charger les données JSON pour le graphique
@@ -66,9 +69,40 @@ const PredictionsChart = () => {
                 setErrorTable(error);
                 setLoadingTable(false);
             });
+
+        // Charger les données JSON pour le graphique de la France
+        fetch('/historical_medals.json')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Prétraiter les données pour remplacer les valeurs nulles
+                const years = data.map(item => item.year);
+                const medalCounts = data.map(item => item.medal_count !== null ? item.medal_count : 0);
+
+                setFranceChartData({
+                    labels: years,
+                    datasets: [
+                        {
+                            label: 'France Medal Count',
+                            data: medalCounts,
+                            borderColor: 'green',
+                            fill: false,
+                        },
+                    ],
+                });
+                setLoadingFranceChart(false);
+            })
+            .catch(error => {
+                setErrorFranceChart(error);
+                setLoadingFranceChart(false);
+            });
     }, []);
 
-    if (loadingChart || loadingTable) {
+    if (loadingChart || loadingTable || loadingFranceChart) {
         return <div>Loading...</div>;
     }
 
@@ -78,6 +112,10 @@ const PredictionsChart = () => {
 
     if (errorTable) {
         return <div>Error loading table data: {errorTable.message}</div>;
+    }
+
+    if (errorFranceChart) {
+        return <div>Error loading France chart data: {errorFranceChart.message}</div>;
     }
 
     return (
@@ -124,6 +162,25 @@ const PredictionsChart = () => {
                     ))}
                 </tbody>
             </table>
+            <h2>Prédiction des médailles pour la France aux JO 2024</h2>
+            {franceChartData ? (
+                <Line
+                    data={franceChartData}
+                    options={{
+                        responsive: true,
+                        scales: {
+                            x: {
+                                ticks: {
+                                    maxRotation: 90,
+                                    minRotation: 45,
+                                },
+                            },
+                        },
+                    }}
+                />
+            ) : (
+                <div>No data available</div>
+            )}
         </div>
     );
 };
