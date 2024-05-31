@@ -19,7 +19,6 @@ Développement d'une WebApp qui contiendra les résultats des données à l'issu
 - [Maquette Figma](https://www.figma.com/design/oNA0UtIHas9BOwChQ2Hipq/Untitled?node-id=1309-7)
 - [Déploiement front](https://client-lemon-chi.vercel.app/)
 - [Déploiement back](https://mia13-hackathon.onrender.com/)
-- [Figma](https://www.figma.com/design/oNA0UtIHas9BOwChQ2Hipq/Untitled?node-id=1309-7)
 - [Lien vers la WebApp](https://mia13-hackathon-webapp.com) <!-- Ajout du lien ici -->
 
 ## Ressources 
