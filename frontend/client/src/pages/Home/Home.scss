@@ -219,6 +219,7 @@
 
 .linkContainer {
     display: flex;
+    margin-top: 1.9rem;
     align-items: center;
     gap: 8px;
 
@@ -242,7 +243,6 @@
         width: fit-content;
         padding: 0.58em;
         z-index: 2;
-        margin-top: 1.9rem;
 
         &:after {
             content: '';

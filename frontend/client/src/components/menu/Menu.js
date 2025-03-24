@@ -50,14 +50,14 @@ function Menu(props) {
                         <Link className={`link ${location.pathname === '/' ? 'activeLink' : ''}`} to={'/'}>
                             Accueil
                         </Link>
-                        <Link className={`link ${location.pathname === '/data' ? 'activeLink' : ''}`} to={'/data'}>
+                        {/* <Link className={`link ${location.pathname === '/data' ? 'activeLink' : ''}`} to={'/data'}>
                             Data
-                        </Link>
-                        <Link className={`link ${location.pathname === '/visualisations' ? 'activeLink' : ''}`} to={'/visualisations'}>
-                            Visualisations
                         </Link>
                         <Link className={`link ${location.pathname === '/analysis' ? 'activeLink' : ''}`} to={'/analysis'}>
                             Analyses
+                        </Link> */}
+                        <Link className={`link ${location.pathname === '/visualisations' ? 'activeLink' : ''}`} to={'/visualisations'}>
+                            Visualisations
                         </Link>
                         <Link className={`link ${location.pathname === '/predictions' ? 'activeLink' : ''}`} to={'/predictions'}>
                             Predictions

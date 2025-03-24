@@ -60,16 +60,9 @@ const Home = () => {
                     Plongez dans l'histoire riche et passionnante des Jeux Olympiques !
                 </p>
                 <div className="linkContainer">
+                    Découvrez en plus sur notre projet en visitant notre code
                     <Link className="linkGit" target="blank" to={'https://github.com/RestumpY/MIA13_HACKATHON'}>
                         Lien github
-                        <MdOutlineArrowOutward className="iconeLink" />
-                    </Link>
-                    <Link className="linkTrello" target="blank" to={'https://trello.com/b/ZXgohXYQ/hackathon-team-13'}>
-                        Lien Trello
-                        <MdOutlineArrowOutward className="iconeLink" />
-                    </Link>
-                    <Link className="linkNotion" target="blank" to={'https://www.notion.so/G-n-ral-05f11786e220467f9c210d8ff2a33078'}>
-                        Lien Notion
                         <MdOutlineArrowOutward className="iconeLink" />
                     </Link>
                 </div>

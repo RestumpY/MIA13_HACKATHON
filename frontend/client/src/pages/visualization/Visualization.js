@@ -8,6 +8,11 @@ import PowerBIDashboard from "../../components/powerBiDashboard/PowerBiDashboard
 
 const Visualisations = () => {
     // STATE
+        const title = (
+            <>
+                <span >Nos visualisation</span>
+            </>)
+        const description = "Visualiser nos prédictions de résultats des JO 2024"
 
     // CONSTANTES
     const backgroundImage = 'https://i.pinimg.com/564x/b3/d6/18/b3d618735641b2bad3e2e65e79a3b7a5.jpg';
@@ -16,7 +21,16 @@ const Visualisations = () => {
     return (
         <>
             <BackgroundBody />
-            <Menu />
+            <Header
+                children={<Menu />}
+                title={title}
+                description={description}
+                gradientCode={'rgba(6, 7, 7, 0) 10%, rgb(6, 6, 7)'} // Corrected gradient code rgba(6, 7, 7, 0) 10%, rgb(6, 6, 7)
+                backgroundImage={'https://images.pexels.com/photos/18119175/pexels-photo-18119175/free-photo-of-ville-gens-personnes-individus.jpeg'}
+                color={' white '}
+                descriptionColor={"white"}
+                None={'none'} 
+                Separator={'none'}/>
             <div>
                 <PowerBIDashboard />
             </div>
